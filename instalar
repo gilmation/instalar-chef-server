@@ -7,7 +7,7 @@
 # Con el contenido:
 # deb http://apt.opscode.com/ Ubuntu 8.04 hardy main
 
-echo "deb http://apt.opscode.com/ $(lsb_release -sd; lsb_release -sc) main" >> /tmp/opscode.list;
+echo "deb http://apt.opscode.com/ $(lsb_release -sd) $(lsb_release -sc) main" > /tmp/opscode.list;
 sudo mv /tmp/opscode.list /etc/apt/sources.list.d;
 sudo chown root:root /etc/apt/sources.list.d/opscode.list;
 
