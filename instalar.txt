@@ -1,0 +1,25 @@
+Crea /etc/apt/sources.list.d/opscode.list
+
+Con el contenido:
+
+deb http://apt.opscode.com/ Ubuntu 8.04 hardy main
+
+Antes de instalar los paquetes añade la llave de Opscode PGP a apt:
+
+curl http://apt.opscode.com/packages@opscode.com.gpg.key | sudo apt-key add -
+sudo apt-get update
+
+Nota: RubyGems - dependencia de libchef-ruby1.8 sobre RubyGems para utilizar el recurso de gem_package
+
+# Install RubyGems
+cd /tmp
+wget http://rubyforge.org/frs/download.php/57643/rubygems-1.3.4.tgz
+tar zxvf rubygems-1.3.4.tgz
+cd rubygems-1.3.4
+sudo ruby setup.rb
+sudo ln -sfv /usr/bin/gem1.8 /usr/bin/gem
+cd /tmp
+rm -r /tmp/rubygems*
+
+sudo apt-get install chef chef-server
+
