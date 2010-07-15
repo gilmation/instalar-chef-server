@@ -1,6 +1,6 @@
-### Lanzar el script de la instalación:
+### Lanza el script de la instalación:
 
-./lanzar usuario@host
+    $ ./lanzar usuario@host
 
 ### Configuración
 
