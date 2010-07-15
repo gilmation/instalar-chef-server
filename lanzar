@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Conectar al host (arg 2) como el usuario (arg 1)
+# Copiar el script de instalar desde este directorio al host (arg 2)
+# Lanzar el script de instalar
+#
+
+ARGS_EXPECTED=2
+
+if [[ $# -ne $ARGS_EXPECTED ]]; then
+  echo "Usage: `basename $0` user host"
+  exit 1
+fi
+
+if [[ ! -x ./instalar ]]; then
+  echo "Oops, [./instalar] no es ejecutable !"
+  echo "Voy a probar un [chmod 755 ./instalar]"
+  chmod 755 ./instalar
+fi
+
+scp -p ./instalar $1@$2:~/instalar
+
+ssh $1@$2 "~/instalar"
