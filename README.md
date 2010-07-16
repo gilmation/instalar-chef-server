@@ -8,4 +8,6 @@ Comprobar la configuración en /etc/chef/*.rb
 
 ### Crea un repositorio local
 
+Esto es una prueba
+
 
