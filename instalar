@@ -3,11 +3,18 @@
 # Instalar el servidor de chef
 #
 
+# Actualizar las listas
+sudo apt-get update
+
+# obtener curl para la key de opscode
+sudo apt-get install curl
+
 # Crea /etc/apt/sources.list.d/opscode.list
 # Con el contenido:
-# deb http://apt.opscode.com/ Ubuntu 8.04 hardy main
+# deb http://apt.opscode.com/ "codename" main
+# Ten cuidado con la version de ubuntu que uses -> solo funciona con versiones muy recientes
 
-echo "deb http://apt.opscode.com/ $(lsb_release -sd) $(lsb_release -sc) main" > /tmp/opscode.list;
+echo "deb http://apt.opscode.com/ $(lsb_release -sc) main" > /tmp/opscode.list;
 sudo mv /tmp/opscode.list /etc/apt/sources.list.d;
 sudo chown root:root /etc/apt/sources.list.d/opscode.list;
 
@@ -18,10 +25,9 @@ curl http://apt.opscode.com/packages@opscode.com.gpg.key | sudo apt-key add -
 sudo apt-get update
 
 # Instalar lo basico de Ruby
-sudo apt-get install ruby1.8 ruby1.8-dev libopenssl-ruby1.8 rdoc1.8 ri1.8 irb1.8 build-essential wget
+sudo apt-get install ruby libopenssl-ruby rdoc ri irb build-essential wget
 
 # RubyGems - dependencia de libchef-ruby1.8 sobre RubyGems para utilizar el recurso de gem_package
-
 # Instalar RubyGems
 cd /tmp
 wget http://rubyforge.org/frs/download.php/57643/rubygems-1.3.4.tgz
@@ -33,4 +39,4 @@ cd /tmp
 rm -r /tmp/rubygems*
 
 # Instalar chef y chef server (+ sus dependencias)
-sudo apt-get install chef chef-server
+sudo apt-get install chef chef-server 
